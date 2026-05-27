@@ -1,0 +1,9 @@
+export { Navigation } from "./Navigation";
+export { HeroSection } from "./HeroSection";
+export { SocialProofSection } from "./SocialProofSection";
+export { ServicesSection } from "./ServicesSection";
+export { HowItWorksSection } from "./HowItWorksSection";
+export { AboutSection } from "./AboutSection";
+export { TestimonialSection } from "./TestimonialSection";
+export { ContactSection } from "./ContactSection";
+export { Footer } from "./Footer";
