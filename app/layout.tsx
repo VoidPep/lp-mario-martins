@@ -37,7 +37,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${cormorant.variable} ${manrope.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-surface-page text-text-primary">{children}</body>
+      <body className="min-h-full flex flex-col bg-surface-page text-text-primary pb-20 md:pb-0">{children}</body>
     </html>
   );
 }

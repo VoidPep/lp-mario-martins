@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.agents
+skills-lock.json
+.smithery
+.smithery-config.yaml
+.smithery-config.yaml.lock

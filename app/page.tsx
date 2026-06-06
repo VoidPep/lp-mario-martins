@@ -8,6 +8,7 @@ import {
   TestimonialSection,
   ContactSection,
   Footer,
+  FloatingCTA,
 } from "@/components";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <FloatingCTA />
     </>
   );
 }

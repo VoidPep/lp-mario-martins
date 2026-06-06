@@ -7,10 +7,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.06, delayChildren: 0.1 },
   },
 };
 
@@ -19,11 +16,35 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.4,
-    },
+    transition: { duration: 0.4 },
   },
 };
+
+function PhoneIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22,6 12,13 2,6" />
+    </svg>
+  );
+}
+
+function MapPinIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -43,7 +64,6 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulando envio
     setIsSubmitted(true);
     setTimeout(() => {
       setFormData({ name: "", phone: "", serviceType: "", message: "" });
@@ -52,119 +72,129 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contato" className="py-section-padding-y bg-surface-page px-20">
-      <div className="max-w-content mx-auto">
-        <div className="grid grid-cols-2 gap-16">
-          {/* Coluna Esquerda - Headline + Contatos (45%) */}
+    <section id="contato" className="section-padding bg-surface-page">
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 xl:gap-20 items-start">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-10%" }}
           >
-            {/* Caption */}
-            <motion.p variants={itemVariants} className="font-body text-caption text-accent-primary mb-6">
-              CONSULTA GRATUITA
+            <motion.p variants={itemVariants} className="section-label">
+              Consulta Gratuita
             </motion.p>
 
-            {/* Headline */}
-            <motion.h2 variants={itemVariants} className="font-display text-5xl font-medium text-text-primary mb-2">
+            <motion.h2
+              variants={itemVariants}
+              className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-text-primary leading-tight mb-1"
+            >
               Sua situação
             </motion.h2>
-            <motion.h2 variants={itemVariants} className="font-display text-5xl font-light text-text-primary mb-8">
+            <motion.h2
+              variants={itemVariants}
+              className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-text-primary mb-6"
+            >
               tem solução.
             </motion.h2>
 
-            {/* Subtítulo */}
-            <motion.p variants={itemVariants} className="font-body text-lg text-text-secondary mb-12">
-              Vamos conversar sobre seu caso
+            <motion.p variants={itemVariants} className="font-body text-base lg:text-lg text-text-secondary mb-10 leading-relaxed">
+              Vamos conversar sobre seu caso. Sem compromisso, respondemos em até 24h úteis.
             </motion.p>
 
-            {/* Contatos diretos */}
-            <div className="space-y-6">
-              <motion.div variants={itemVariants} className="flex items-center gap-4">
-                <span className="text-2xl">💬</span>
+            <div className="space-y-0">
+              <motion.div variants={itemVariants} className="contact-row">
+                <div className="contact-icon">
+                  <PhoneIcon />
+                </div>
                 <div>
-                  <p className="font-body text-sm text-text-muted mb-1">WhatsApp</p>
-                  <a href="tel:+5511999999999" className="font-body font-semibold text-text-primary hover:text-accent-primary">
+                  <p className="font-body text-xs text-text-muted uppercase tracking-wider mb-1">WhatsApp</p>
+                  <a
+                    href="tel:+5511999999999"
+                    className="font-body font-semibold text-text-primary hover:text-accent-primary transition-colors"
+                  >
                     (11) 99999-9999
                   </a>
                 </div>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="flex items-center gap-4">
-                <span className="text-2xl">✉️</span>
+              <motion.div variants={itemVariants} className="contact-row">
+                <div className="contact-icon">
+                  <MailIcon />
+                </div>
                 <div>
-                  <p className="font-body text-sm text-text-muted mb-1">E-mail</p>
-                  <a href="mailto:contato@mariocruzadvogado.com.br" className="font-body font-semibold text-text-primary hover:text-accent-primary">
+                  <p className="font-body text-xs text-text-muted uppercase tracking-wider mb-1">E-mail</p>
+                  <a
+                    href="mailto:contato@mariocruzadvogado.com.br"
+                    className="font-body font-semibold text-text-primary hover:text-accent-primary transition-colors break-all"
+                  >
                     contato@mariocruzadvogado.com.br
                   </a>
                 </div>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="flex items-center gap-4">
-                <span className="text-2xl">📍</span>
+              <motion.div variants={itemVariants} className="contact-row">
+                <div className="contact-icon">
+                  <MapPinIcon />
+                </div>
                 <div>
-                  <p className="font-body text-sm text-text-muted mb-1">Escritório</p>
-                  <p className="font-body font-semibold text-text-primary">
-                    São Paulo, SP
-                  </p>
+                  <p className="font-body text-xs text-text-muted uppercase tracking-wider mb-1">Escritório</p>
+                  <p className="font-body font-semibold text-text-primary">São Paulo, SP</p>
                 </div>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Coluna Direita - Formulário (55%) */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-10%" }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Nome */}
-              <motion.div variants={itemVariants}>
-                <label className="font-body text-caption text-text-muted block mb-2">
-                  NOME COMPLETO
+            <form onSubmit={handleSubmit} className="form-card space-y-5">
+              <motion.div variants={itemVariants} className="form-group">
+                <label htmlFor="name" className="form-label">
+                  Nome completo
                 </label>
                 <input
+                  id="name"
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-surface-card border border-default text-text-primary font-body text-body px-4 py-3.5 rounded-input focus:border-accent-primary focus:outline-none transition-colors duration-200"
+                  className="form-input"
                   placeholder="Seu nome"
                 />
               </motion.div>
 
-              {/* Telefone/WhatsApp */}
-              <motion.div variants={itemVariants}>
-                <label className="font-body text-caption text-text-muted block mb-2">
-                  TELEFONE / WHATSAPP
+              <motion.div variants={itemVariants} className="form-group">
+                <label htmlFor="phone" className="form-label">
+                  Telefone / WhatsApp
                 </label>
                 <input
+                  id="phone"
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full bg-surface-card border border-default text-text-primary font-body text-body px-4 py-3.5 rounded-input focus:border-accent-primary focus:outline-none transition-colors duration-200"
+                  className="form-input"
                   placeholder="(11) 99999-9999"
                 />
               </motion.div>
 
-              {/* Tipo de Benefício */}
-              <motion.div variants={itemVariants}>
-                <label className="font-body text-caption text-text-muted block mb-2">
-                  TIPO DE BENEFÍCIO
+              <motion.div variants={itemVariants} className="form-group">
+                <label htmlFor="serviceType" className="form-label">
+                  Tipo de benefício
                 </label>
                 <select
+                  id="serviceType"
                   name="serviceType"
                   value={formData.serviceType}
                   onChange={handleChange}
                   required
-                  className="w-full bg-surface-card border border-default text-text-primary font-body text-body px-4 py-3.5 rounded-input focus:border-accent-primary focus:outline-none transition-colors duration-200"
+                  className="form-select"
                 >
                   <option value="">Selecione um benefício</option>
                   <option value="aposentadoria-tempo">Aposentadoria por Tempo de Contribuição</option>
@@ -173,38 +203,36 @@ export function ContactSection() {
                   <option value="auxilio-doenca">Auxílio-Doença</option>
                   <option value="bpc-loas">BPC/LOAS</option>
                   <option value="revisao-beneficio">Revisão de Benefício</option>
-                  <option value="beneficio-negado">Benefício Negado - Recurso</option>
+                  <option value="beneficio-negado">Benefício Negado — Recurso</option>
                 </select>
               </motion.div>
 
-              {/* Mensagem */}
-              <motion.div variants={itemVariants}>
-                <label className="font-body text-caption text-text-muted block mb-2">
-                  MENSAGEM (OPCIONAL)
+              <motion.div variants={itemVariants} className="form-group">
+                <label htmlFor="message" className="form-label">
+                  Mensagem (opcional)
                 </label>
                 <textarea
+                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-surface-card border border-default text-text-primary font-body text-body px-4 py-3.5 rounded-input focus:border-accent-primary focus:outline-none transition-colors duration-200 resize-none"
+                  className="form-textarea"
                   placeholder="Descreva brevemente sua situação..."
                   rows={4}
                 />
               </motion.div>
 
-              {/* Botão de Envio */}
-              <motion.div variants={itemVariants}>
+              <motion.div variants={itemVariants} className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitted}
-                  className="w-full bg-accent-primary text-text-on-accent font-body text-cta h-13 rounded-button hover:bg-accent-hover hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary btn-full"
                 >
-                  {isSubmitted ? "Mensagem enviada! ✓" : "Enviar mensagem"}
+                  {isSubmitted ? "Mensagem enviada ✓" : "Enviar mensagem"}
                 </button>
               </motion.div>
 
-              {/* Texto de confirmação */}
-              <motion.p variants={itemVariants} className="font-body text-xs text-text-muted text-center">
+              <motion.p variants={itemVariants} className="font-body text-xs text-text-muted text-center pt-1">
                 Respondemos em até 24h úteis. Sem compromisso.
               </motion.p>
             </form>

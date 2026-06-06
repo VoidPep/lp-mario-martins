@@ -28,31 +28,28 @@ export function HowItWorksSection() {
     offset: ["start end", "end start"],
   });
 
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 1], [1000, 0]);
 
   return (
-    <section
-      ref={ref}
-      id="como-funciona"
-      className="py-section-padding-y bg-surface-section-alt px-20"
-    >
-      <div className="max-w-content mx-auto">
-        {/* Título */}
-        <motion.h2
-          className="font-display text-section-title text-text-primary text-center mb-24"
+    <section ref={ref} id="como-funciona" className="section-padding bg-surface-section-alt">
+      <div className="section-container">
+        <motion.div
+          className="text-center mb-14 lg:mb-20"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-10%" }}
         >
-          Como Funciona
-        </motion.h2>
+          <p className="section-label">Processo</p>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-section-title text-text-primary font-semibold">
+            Como Funciona
+          </h2>
+        </motion.div>
 
-        {/* Steps com path animado */}
-        <div className="relative">
-          {/* SVG Path animado */}
+        {/* Desktop: horizontal path */}
+        <div className="hidden lg:block relative">
           <svg
-            className="absolute top-0 left-0 w-full h-32 pointer-events-none"
+            className="absolute top-10 left-0 w-full h-32 pointer-events-none"
             viewBox="0 0 1280 128"
             preserveAspectRatio="none"
           >
@@ -62,43 +59,73 @@ export function HowItWorksSection() {
               stroke="#B8924A"
               strokeWidth="2"
               strokeDasharray="1000"
-              strokeDashoffset={useTransform(pathLength, [0, 1], [1000, 0])}
+              strokeDashoffset={pathLength}
             />
           </svg>
 
-          {/* Grid de steps */}
           <div className="grid grid-cols-3 gap-12 relative z-10">
+            {steps.map((step) => (
+              <StepCard key={step.number} step={step} delay={step.number * 0.1} />
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: vertical timeline */}
+        <div className="lg:hidden relative pl-8">
+          <div className="absolute left-[1.125rem] top-4 bottom-4 w-px border-l border-dashed border-accent-primary/40" />
+
+          <div className="space-y-10">
             {steps.map((step) => (
               <motion.div
                 key={step.number}
-                className="text-center"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: step.number * 0.1,
-                }}
+                className="relative"
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: step.number * 0.1 }}
                 viewport={{ once: true, margin: "-10%" }}
               >
-                {/* Círculo com número */}
-                <div className="w-20 h-20 rounded-full bg-accent-primary text-text-on-accent flex items-center justify-center mx-auto mb-6 font-body text-cta font-bold">
+                <div className="absolute -left-8 top-0 w-9 h-9 rounded-full bg-accent-primary text-text-on-accent flex items-center justify-center font-body text-sm font-bold ring-4 ring-surface-section-alt">
                   {step.number}
                 </div>
-
-                {/* Título */}
-                <h3 className="font-display text-xl font-medium text-text-primary mb-3">
-                  {step.title}
-                </h3>
-
-                {/* Descrição */}
-                <p className="font-body text-sm text-text-secondary">
-                  {step.description}
-                </p>
+                <div className="pl-4">
+                  <h3 className="font-display text-xl font-medium text-text-primary mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="font-body text-sm text-text-secondary leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function StepCard({
+  step,
+  delay,
+}: {
+  step: (typeof steps)[number];
+  delay: number;
+}) {
+  return (
+    <motion.div
+      className="text-center px-4"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true, margin: "-10%" }}
+    >
+      <div className="w-[4.5rem] h-[4.5rem] rounded-full bg-accent-primary text-text-on-accent flex items-center justify-center mx-auto mb-6 font-body text-lg font-bold shadow-[0_4px_20px_rgba(184,146,74,0.3)] ring-4 ring-accent-primary/10">
+        {step.number}
+      </div>
+      <h3 className="font-display text-xl font-medium text-text-primary mb-3">{step.title}</h3>
+      <p className="font-body text-sm text-text-secondary leading-relaxed max-w-xs mx-auto">
+        {step.description}
+      </p>
+    </motion.div>
   );
 }

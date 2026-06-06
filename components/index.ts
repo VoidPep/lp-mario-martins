@@ -7,3 +7,4 @@ export { AboutSection } from "./AboutSection";
 export { TestimonialSection } from "./TestimonialSection";
 export { ContactSection } from "./ContactSection";
 export { Footer } from "./Footer";
+export { FloatingCTA } from "./FloatingCTA";

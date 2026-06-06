@@ -10,7 +10,6 @@ const services = [
     description: "Análise completa de seu período contributivo ao INSS e orientação estratégica.",
     svg: (
       <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" className="w-full">
-        {/* Timeline com pontos */}
         <line x1="20" y1="40" x2="180" y2="40" stroke="#5C7080" strokeWidth="1" />
         {[20, 60, 100, 140, 180].map((x, i) => (
           <g key={i}>
@@ -48,7 +47,6 @@ const services = [
     description: "Especialização em comprovação de atividade rural e cálculo de tempo de contribuição.",
     svg: (
       <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" className="w-full">
-        {/* Grade de talhões */}
         {Array.from({ length: 12 }).map((_, i) => {
           const row = Math.floor(i / 4);
           const col = i % 4;
@@ -83,9 +81,7 @@ const services = [
     description: "Recebimento correto de benefícios por incapacidade temporária ou permanente.",
     svg: (
       <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" className="w-full">
-        {/* Linha central */}
         <line x1="100" y1="20" x2="100" y2="60" stroke="#5C7080" strokeWidth="2" />
-        {/* Barras horizontais */}
         {[
           { y: 30, width: 35, color: "#5C7080" },
           { y: 40, width: 50, color: "#B8924A" },
@@ -111,10 +107,8 @@ const services = [
     description: "Garantia de 1 salário mínimo para pessoas idosas ou com deficiência.",
     svg: (
       <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" className="w-full">
-        {/* Círculos concêntricos */}
         <circle cx="100" cy="40" r="32" fill="none" stroke="#5C7080" strokeWidth="1" />
         <circle cx="100" cy="40" r="20" fill="none" stroke="#5C7080" strokeWidth="1" />
-        {/* Número "1" em dourado */}
         <text x="100" y="48" textAnchor="middle" fontSize="24" fill="#B8924A" fontFamily="serif">
           1
         </text>
@@ -128,13 +122,10 @@ const services = [
     description: "Recalcular o valor devido com todas as contribuições ou períodos computáveis.",
     svg: (
       <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" className="w-full">
-        {/* Valor antigo com tachado */}
         <text x="50" y="40" textAnchor="middle" fontSize="14" fill="#5C7080" fontFamily="monospace">
           R$ 1.200
         </text>
         <line x1="30" y1="35" x2="70" y2="45" stroke="#5C7080" strokeWidth="1" />
-
-        {/* Seta */}
         <path
           d="M 85 40 Q 100 35 100 50"
           fill="none"
@@ -142,12 +133,9 @@ const services = [
           strokeWidth="2"
           markerEnd="url(#arrowhead)"
         />
-
-        {/* Valor novo em dourado */}
         <text x="150" y="42" textAnchor="middle" fontSize="16" fill="#B8924A" fontFamily="monospace" fontWeight="bold">
           R$ 1.850
         </text>
-
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
             <polygon points="0 0, 10 5, 0 10" fill="#B8924A" />
@@ -163,13 +151,10 @@ const services = [
     description: "Transformar uma negação em aprovação através de argumentação jurídica forte.",
     svg: (
       <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" className="w-full">
-        {/* Documento com X */}
         <rect x="40" y="25" width="40" height="50" fill="none" stroke="#8C3D3D" strokeWidth="1" opacity="0.5" />
         <text x="60" y="55" textAnchor="middle" fontSize="24" fill="#8C3D3D" opacity="0.5">
           ✕
         </text>
-
-        {/* Seta curvada */}
         <motion.path
           d="M 85 50 Q 105 35 120 45"
           fill="none"
@@ -181,10 +166,7 @@ const services = [
           viewport={{ once: true }}
           markerEnd="url(#arrow)"
         />
-
-        {/* Documento aprovado */}
         <rect x="120" y="25" width="40" height="50" fill="none" stroke="#B8924A" strokeWidth="1" />
-
         <defs>
           <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
             <polygon points="0 0, 10 5, 0 10" fill="#B8924A" />
@@ -200,10 +182,7 @@ export function ServicesSection() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
 
@@ -212,43 +191,54 @@ export function ServicesSection() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.5,
-      },
+      transition: { duration: 0.5 },
     },
   };
 
   return (
-    <section id="servicos" className="py-section-padding-y bg-surface-page px-20">
-      <div className="max-w-content mx-auto">
+    <section id="servicos" className="section-padding bg-surface-page">
+      <div className="section-container">
+        <motion.div
+          className="mb-12 lg:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-10%" }}
+        >
+          <p className="section-label">Áreas de Atuação</p>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-section-title text-text-primary font-semibold">
+            Serviços Previdenciários
+          </h2>
+        </motion.div>
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-10%" }}
+          className="border-t border-subtle"
         >
           {services.map((service) => (
             <motion.div
               key={service.id}
               variants={itemVariants}
-              className="border-t border-subtle py-8 flex items-center justify-between group hover:border-t-accent-primary transition-colors duration-300"
+              className="border-b border-subtle py-8 lg:py-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 group hover:border-b-accent-primary/40 transition-colors duration-300"
             >
-              {/* Informações do serviço */}
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <p className="font-body text-caption text-text-muted mb-2">{service.label}</p>
-                <h3 className="font-display text-2xl font-medium text-text-primary mb-2">
+                <h3 className="font-display text-xl sm:text-2xl font-medium text-text-primary mb-3 leading-snug">
                   {service.title}
                 </h3>
-                <p className="font-body text-sm text-text-secondary max-w-sm mb-4">
+                <p className="font-body text-sm sm:text-base text-text-secondary max-w-lg mb-4 leading-relaxed">
                   {service.description}
                 </p>
-                <button className="font-body text-sm text-accent-primary hover:underline">
-                  Saiba mais →
+                <button type="button" className="btn-ghost">
+                  Saiba mais
+                  <span aria-hidden="true">→</span>
                 </button>
               </div>
 
-              {/* SVG visual */}
-              <div className="w-48 h-20 flex-shrink-0 ml-12 hidden lg:flex items-center justify-center">
+              <div className="w-full lg:w-48 h-16 lg:h-20 flex-shrink-0 hidden md:flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity">
                 {service.svg}
               </div>
             </motion.div>

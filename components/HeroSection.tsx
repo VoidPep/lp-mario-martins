@@ -8,108 +8,95 @@ export function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.12,
+        delayChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-      },
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
 
   return (
-    <section className="pt-40 pb-32 px-6 sm:px-8 lg:px-16 bg-surface-page relative min-h-screen flex items-center justify-center">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Coluna Esquerda - Texto (55%) */}
+    <section className="section-padding pt-32 lg:pt-40 pb-20 lg:pb-28 bg-surface-page relative min-h-[90vh] flex items-center">
+      <div className="section-container w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 xl:gap-24 items-center">
           <motion.div
-            className="col-span-1 flex flex-col justify-center"
+            className="flex flex-col justify-center"
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
+            animate="visible"
           >
-            {/* Subtitle elegante */}
-            <motion.p
-              variants={itemVariants}
-              className="font-body text-xs lg:text-sm font-semibold text-accent-primary tracking-widest uppercase mb-8"
-            >
-              ✨ Especialista em Direito Previdenciário
+            <motion.p variants={itemVariants} className="section-label">
+              Advocacia Previdenciária Especializada
             </motion.p>
 
-            {/* Headline com contraste de peso */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary leading-tight mb-3"
+              className="font-display text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold text-text-primary leading-[1.05] mb-1"
             >
               Seu benefício
             </motion.h1>
 
             <motion.h1
               variants={itemVariants}
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-accent-primary leading-tight mb-8"
+              className="font-display text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-light text-accent-primary leading-[1.05] mb-8 lg:mb-10"
             >
               tem solução
             </motion.h1>
 
-            {/* Descrição */}
             <motion.p
               variants={itemVariants}
-              className="font-body text-lg lg:text-xl text-text-secondary mb-12 max-w-md leading-relaxed"
+              className="font-body text-base lg:text-lg text-text-secondary mb-10 lg:mb-12 max-w-md leading-relaxed"
             >
-              Com mais de 17 anos de experiência, recupero benefícios negados, atrasados ou sub-calculados. Você merece receber aquilo que é seu por direito.
+              Com mais de 17 anos de experiência, recupero benefícios negados, atrasados ou
+              sub-calculados. Você merece receber aquilo que é seu por direito.
             </motion.p>
 
-            {/* CTAs com melhor espaçamento */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <button className="bg-accent-primary text-text-on-accent font-body text-cta px-8 py-4 rounded-button hover:bg-accent-hover hover:shadow-float hover:-translate-y-1 transition-all duration-200 active:translate-y-0 whitespace-nowrap">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+              <a href="#contato" className="btn-primary">
                 Marcar Consulta Gratuita
-              </button>
-              <button className="border-2 border-accent-primary text-accent-primary font-body text-cta px-8 py-4 rounded-button hover:bg-accent-subtle hover:shadow-float transition-all duration-200 whitespace-nowrap">
-                Saiba Mais
-              </button>
+              </a>
+              <a href="#servicos" className="btn-secondary">
+                Conheça os Serviços
+              </a>
             </motion.div>
 
-            {/* Stats rápidos */}
-            <motion.div variants={itemVariants} className="flex gap-12 mt-16 pt-12 border-t border-subtle/30">
-              <div>
-                <p className="font-display text-3xl font-bold text-accent-primary">300+</p>
-                <p className="font-body text-sm text-text-muted mt-2">Benefícios Conquistados</p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-bold text-accent-primary">17 anos</p>
-                <p className="font-body text-sm text-text-muted mt-2">De Atuação</p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-bold text-accent-primary">98%</p>
-                <p className="font-body text-sm text-text-muted mt-2">Taxa de Aprovação</p>
-              </div>
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-3 gap-6 sm:gap-10 mt-14 lg:mt-20 pt-10 border-t border-subtle"
+            >
+              {[
+                { value: "300+", label: "Benefícios Conquistados" },
+                { value: "17", label: "Anos de Atuação" },
+                { value: "98%", label: "Taxa de Aprovação" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-display text-2xl sm:text-3xl font-light text-accent-primary">
+                    {stat.value}
+                  </p>
+                  <p className="font-body text-xs sm:text-sm text-text-muted mt-1.5 leading-snug">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* Coluna Direita - SVG (45%) */}
           <motion.div
-            className="col-span-1 flex justify-center items-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9 }}
-            viewport={{ once: true, margin: "-10%" }}
+            className="flex justify-center items-center order-first lg:order-last"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="w-full max-w-md">
-              <svg
-                className="w-full"
-                viewBox="0 0 500 480"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Container visual com borda sutil */}
+            <div className="w-full max-w-md lg:max-w-none">
+              <svg className="w-full" viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg">
                 <rect
                   x="50"
                   y="40"
@@ -122,7 +109,6 @@ export function HeroSection() {
                   rx="4"
                 />
 
-                {/* Documentos empilhados com gradiente */}
                 {[
                   { y: 0, width: 240, height: 32, i: 0 },
                   { y: 60, width: 180, height: 32, i: 1 },
@@ -130,26 +116,20 @@ export function HeroSection() {
                   { y: 180, width: 160, height: 32, i: 3 },
                   { y: 240, width: 220, height: 32, i: 4 },
                 ].map((doc) => (
-                  <motion.g key={doc.i}>
-                    <rect
-                      x={(500 - doc.width) / 2}
-                      y={100 + doc.y}
-                      width={doc.width}
-                      height={doc.height}
-                      fill="#131F2A"
-                      stroke="#B8924A"
-                      strokeWidth="1.5"
-                      opacity="0.7"
-                      rx="2"
-                      // initial={{ opacity: 0, x: -20 }}
-                      // whileInView={{ opacity: 0.7, x: 0 }}
-                      // transition={{ delay: doc.i * 0.15, duration: 0.6 }}
-                      // viewport={{ once: true }}
-                    />
-                  </motion.g>
+                  <rect
+                    key={doc.i}
+                    x={(500 - doc.width) / 2}
+                    y={100 + doc.y}
+                    width={doc.width}
+                    height={doc.height}
+                    fill="#131F2A"
+                    stroke="#B8924A"
+                    strokeWidth="1.5"
+                    opacity="0.7"
+                    rx="2"
+                  />
                 ))}
 
-                {/* Linha diagonal em dourado com efeito */}
                 <motion.line
                   x1="80"
                   y1="330"
@@ -159,25 +139,22 @@ export function HeroSection() {
                   strokeWidth="3"
                   strokeDasharray="400"
                   animate={{ strokeDashoffset: [400, 0, 400] }}
-                  transition={{ duration: 4, repeat: Infinity }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                 />
 
-                {/* Pontos brilhantes */}
                 {[140, 210, 280, 350].map((x, i) => (
                   <motion.circle
                     key={`point-${i}`}
                     cx={x}
                     cy={330 - ((x - 80) * 200) / 340}
-                    r="6"
+                    r="5"
                     fill="#B8924A"
                     initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: 0.5 + i * 0.15, duration: 0.4 }}
-                    viewport={{ once: true }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.8 + i * 0.12, duration: 0.4 }}
                   />
                 ))}
 
-                {/* Gradiente */}
                 <defs>
                   <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#B8924A" stopOpacity="0.3" />
