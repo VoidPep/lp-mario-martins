@@ -71,23 +71,29 @@ export function HowItWorksSection() {
         </div>
 
         {/* Mobile: vertical timeline */}
-        <div className="lg:hidden relative pl-8">
-          <div className="absolute left-[1.125rem] top-4 bottom-4 w-px border-l border-dashed border-accent-primary/40" />
-
-          <div className="space-y-10">
-            {steps.map((step) => (
+        <div className="lg:hidden">
+          <div className="space-y-0">
+            {steps.map((step, index) => (
               <motion.div
                 key={step.number}
-                className="relative"
+                className="flex gap-5 sm:gap-6"
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: step.number * 0.1 }}
                 viewport={{ once: true, margin: "-10%" }}
               >
-                <div className="absolute -left-8 top-0 w-9 h-9 rounded-full bg-accent-primary text-text-on-accent flex items-center justify-center font-body text-sm font-bold ring-4 ring-surface-section-alt">
-                  {step.number}
+                <div className="flex flex-col items-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-accent-primary text-text-on-accent flex items-center justify-center font-body text-sm font-bold ring-4 ring-surface-section-alt">
+                    {step.number}
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div
+                      className="w-px flex-1 min-h-10 my-2 border-l border-dashed border-accent-primary/40"
+                      aria-hidden="true"
+                    />
+                  )}
                 </div>
-                <div className="pl-4">
+                <div className={index < steps.length - 1 ? "pb-10" : "pb-0"}>
                   <h3 className="font-display text-xl font-medium text-text-primary mb-2">
                     {step.title}
                   </h3>
