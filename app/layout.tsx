@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
+import { GlowBackground } from './../components/GlowBackground';
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -33,11 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="pt-BR"
-      className={`${cormorant.variable} ${manrope.variable} h-full antialiased scroll-smooth`}
-    >
-      <body className="min-h-full flex flex-col bg-surface-page text-text-primary pb-20 md:pb-0">{children}</body>
+    <html lang="pt-BR" className={`${cormorant.variable} ${manrope.variable} h-full antialiased scroll-smooth`}>
+      <body className="min-h-full flex flex-col bg-surface-page text-text-primary pb-20 md:pb-0">
+        <GlowBackground />
+        {children}
+      </body>
     </html>
   );
 }

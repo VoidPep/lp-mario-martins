@@ -46,24 +46,22 @@ export function ServicesSection() {
           viewport={{ once: true, margin: "-10%" }}
           className="border-t border-subtle"
         >
-          {services.map((service) => (
+          {services.map((service, index) => (
             <motion.div
               key={service.id}
               variants={itemVariants}
-              className="border-b border-subtle py-8 lg:py-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 group hover:border-b-accent-primary/40 transition-colors duration-300"
+              className="border-b border-subtle py-8 lg:py-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 group hover:border-b-[#B8924A] transition-colors duration-300"
             >
               <div className="flex-1 min-w-0">
-                <p className="font-body text-caption text-text-muted mb-2">{service.label}</p>
+                <p className="font-body text-caption text-text-muted mb-2 [.group:hover_&]:text-[#B8924A] transition-colors duration-300">
+                  {service.label}
+                </p>
                 <h3 className="font-display text-xl sm:text-2xl font-medium text-text-primary mb-3 leading-snug">
-                  {service.title}
+                  <span className="text-[#B8924A] font-light mr-2">{String(index + 1).padStart(2, "0")}</span> - {service.title}
                 </h3>
                 <p className="font-body text-sm sm:text-base text-text-secondary max-w-lg mb-4 leading-relaxed">
                   {service.description}
                 </p>
-                <button type="button" className="btn-ghost">
-                  Saiba mais
-                  <span aria-hidden="true">→</span>
-                </button>
               </div>
             </motion.div>
           ))}

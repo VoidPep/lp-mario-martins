@@ -51,11 +51,6 @@ export function AboutSection() {
             <p className="font-body text-caption text-text-muted mb-8">
               {siteConfig.advogado.oab} · {siteConfig.advogado.especialidade}
             </p>
-
-            <button type="button" className="btn-ghost">
-              Leia o perfil completo
-              <span aria-hidden="true">→</span>
-            </button>
           </motion.div>
         </div>
       </div>
