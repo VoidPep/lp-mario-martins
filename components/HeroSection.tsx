@@ -40,29 +40,28 @@ export function HeroSection() {
 
             <motion.h1
               variants={itemVariants}
-              className="font-display text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold text-text-primary leading-[1.05] mb-1"
+              className="font-display text-[2rem] sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold text-text-primary leading-[1.05] mb-1"
             >
-              Seu benefício
+              Transformamos direitos previdenciários
             </motion.h1>
 
             <motion.h1
               variants={itemVariants}
-              className="font-display text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-light text-accent-primary leading-[1.05] mb-8 lg:mb-10"
+              className="font-display text-[2rem] sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-light text-accent-primary leading-[1.05] mb-8 lg:mb-10"
             >
-              tem solução
+              em conquistas
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="font-body text-base lg:text-lg text-text-secondary mb-10 lg:mb-12 max-w-md leading-relaxed"
             >
-              Com mais de 17 anos de experiência, recupero benefícios negados, atrasados ou
-              sub-calculados. Você merece receber aquilo que é seu por direito.
+              Analisamos seu caso e buscamos garantir o benfício que você tem direito: aposentadoria, revisões, benefícios negados e valores atrasados
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
               <a href="#contato" className="btn-primary">
-                Marcar Consulta Gratuita
+                Analisar meu caso gratuitamente
               </a>
               <a href="#servicos" className="btn-secondary">
                 Conheça os Serviços
