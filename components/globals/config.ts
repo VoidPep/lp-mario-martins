@@ -7,6 +7,7 @@ export const siteConfig = {
     telefone: "44 9 9952-3620",
     localidade: "Maringá, PR",
     links: {
+        linkedin: "https://www.linkedin.com/in/mario-martins-advogado-previdenciarista/",
         whatsapp: "https://wa.me/5544999523620",
         instagram: "https://www.instagram.com/mariocruzmartins/"
     }

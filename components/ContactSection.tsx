@@ -50,14 +50,11 @@ function MapPinIcon() {
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
-    serviceType: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -65,11 +62,18 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: "", phone: "", serviceType: "", message: "" });
-      setIsSubmitted(false);
-    }, 3000);
+
+    const text = [
+      `Olá, Dr. Mário! Sou ${formData.name}, vim pelo site e gostaria de uma consulta.`,
+      ``,
+      formData.message ? `*Situação:* ${formData.message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const encoded = encodeURIComponent(text);
+    const number = siteConfig.advogado.links.whatsapp.replace(/\D/g, "");
+    window.open(`https://wa.me/${number}?text=${encoded}`, "_blank");
   };
 
   return (
@@ -100,7 +104,7 @@ export function ContactSection() {
             </motion.h2>
 
             <motion.p variants={itemVariants} className="font-body text-base lg:text-lg text-text-secondary mb-10 leading-relaxed">
-              Vamos conversar sobre seu caso. Sem compromisso, respondemos em até 24h úteis.
+              Preencha o formulário e você será redirecionado para o nosso WhatsApp com sua mensagem já formatada.
             </motion.p>
 
             <div className="space-y-0">
@@ -111,7 +115,8 @@ export function ContactSection() {
                 <div>
                   <p className="font-body text-xs text-text-muted uppercase tracking-wider mb-1">WhatsApp</p>
                   <a
-                    href={siteConfig.advogado.links.whatsapp} target="_blank"
+                    href={siteConfig.advogado.links.whatsapp}
+                    target="_blank"
                     className="font-body font-semibold text-text-primary hover:text-accent-primary transition-colors"
                   >
                     {siteConfig.advogado.telefone}
@@ -170,24 +175,8 @@ export function ContactSection() {
               </motion.div>
 
               <motion.div variants={itemVariants} className="form-group">
-                <label htmlFor="phone" className="form-label">
-                  Telefone / WhatsApp
-                </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="form-input"
-                  placeholder="(11) 99999-9999"
-                />
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="form-group">
                 <label htmlFor="message" className="form-label">
-                  Mensagem (opcional)
+                  Descreva sua situação (opcional)
                 </label>
                 <textarea
                   id="message"
@@ -195,20 +184,20 @@ export function ContactSection() {
                   value={formData.message}
                   onChange={handleChange}
                   className="form-textarea"
-                  placeholder="Descreva brevemente sua situação..."
+                  placeholder="Ex: Tive meu auxílio-doença negado e gostaria de recorrer..."
                   rows={4}
                 />
               </motion.div>
 
               <motion.div variants={itemVariants} className="pt-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitted}
-                  className="btn-primary btn-full"
-                >
-                  {isSubmitted ? "Mensagem enviada ✓" : "Enviar mensagem"}
+                <button type="submit" className="btn-primary btn-full">
+                  Enviar pelo WhatsApp
                 </button>
               </motion.div>
+
+              <motion.p variants={itemVariants} className="font-body text-xs text-text-muted text-center pt-1">
+                Você será redirecionado para o WhatsApp com sua mensagem já preenchida.
+              </motion.p>
             </form>
           </motion.div>
         </div>
