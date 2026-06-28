@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig } from './globals/config';
 
 const navLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
@@ -15,9 +16,9 @@ export function Footer() {
       <div className="section-container py-14 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-10">
           <div>
-            <p className="text-accent-primary font-display text-2xl font-bold mb-3 tracking-tight">MCM</p>
+            <p className="text-accent-primary font-display text-2xl font-bold mb-3 tracking-tight">Mário da Cruz Martins </p>
             <p className="font-body text-sm text-text-muted leading-relaxed max-w-xs">
-              Advogado Previdenciário especializado em direito do INSS
+              Advogado {siteConfig.advogado.especialidade}
             </p>
           </div>
 
@@ -39,10 +40,10 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <p className="font-body text-caption text-text-muted mb-4">Credencial</p>
             <p className="font-body text-sm text-text-secondary mb-2">
-              <span className="text-accent-primary font-semibold">OAB/SP 123456</span>
+              <span className="text-accent-primary font-semibold">{siteConfig.advogado.oab}</span>
             </p>
             <p className="font-body text-xs text-text-muted leading-relaxed">
-              Especialista em Direito Previdenciário pelo IBDP
+              {siteConfig.advogado.especialidade}
             </p>
           </div>
         </div>
@@ -50,8 +51,6 @@ export function Footer() {
         <div className="border-t border-subtle pt-8 text-center">
           <p className="text-sm text-text-muted leading-relaxed">
             © {currentYear} Mário da Cruz Martins. Todos os direitos reservados.
-            <span className="hidden sm:inline"> · </span>
-            <span className="block sm:inline mt-1 sm:mt-0">Desenvolvido com precisão jurídica</span>
           </p>
         </div>
       </div>

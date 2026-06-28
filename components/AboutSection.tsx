@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { siteConfig } from "./globals/config";
 
 export function AboutSection() {
   return (
@@ -15,16 +17,12 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-10%" }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-surface-card to-surface-elevated flex items-center justify-center">
-              <div className="text-center px-6">
-                <div className="w-20 h-20 mx-auto mb-5 rounded-full border border-accent-primary/30 flex items-center justify-center">
-                  <span className="font-display text-3xl text-accent-primary">M</span>
-                </div>
-                <p className="text-text-muted text-sm leading-relaxed">
-                  Foto do Dr. Mário da Cruz Martins
-                  <br />
-                  <span className="text-xs">(Fornecer foto profissional em P&amp;B)</span>
-                </p>
-              </div>
+              <Image
+                src="/mario-cruz-advogado.png"
+                alt="Dr. Mário da Cruz Martins"
+                fill
+                className="object-cover object-top grayscale"
+              />
             </div>
             <div className="absolute inset-0 bg-[#0B1219]/20 mix-blend-multiply pointer-events-none" />
           </motion.div>
@@ -39,27 +37,19 @@ export function AboutSection() {
             <p className="section-label text-text-muted">Sobre o Advogado</p>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-section-title text-text-primary font-semibold mb-6 leading-tight">
-              Mais de 300 famílias que não desistiram.
+              Mário da Cruz Martins
             </h2>
 
             <p className="font-body text-base lg:text-body text-text-secondary mb-8 leading-relaxed">
               Com mais de 17 anos de atuação exclusiva em Direito Previdenciário, o Dr. Mário da
               Cruz Martins dedica-se a recuperar benefícios negados e garantir que cada cliente
-              receba aquilo que é seu por direito. Especialista em aposentadorias, auxílios-doença,
-              BPC/LOAS e revisões de benefícios.
+              receba aquilo que é seu por direito. Especialista em Aposentadoria Especial, por tempo de Contribuição, por Idade, Rural e demais Benefícios previdenciários.
             </p>
 
-            <div className="flex items-baseline gap-4 mb-8 pb-8 border-b border-subtle">
-              <span className="font-display text-5xl sm:text-6xl lg:text-[4.5rem] text-accent-primary font-light leading-none">
-                17
-              </span>
-              <span className="font-body text-sm sm:text-base text-text-secondary leading-snug max-w-[200px]">
-                anos de atuação exclusiva em Direito Previdenciário
-              </span>
-            </div>
+            <div className="flex items-baseline gap-4 mb-8 pb-8 border-b border-subtle"></div>
 
             <p className="font-body text-caption text-text-muted mb-8">
-              OAB/SP 123456 · Especialista em Direito Previdenciário
+              {siteConfig.advogado.oab} · {siteConfig.advogado.especialidade}
             </p>
 
             <button type="button" className="btn-ghost">

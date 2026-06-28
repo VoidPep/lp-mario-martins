@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
@@ -29,12 +30,22 @@ export function Navigation() {
       }`}
     >
       <div className="section-container h-[4.5rem] lg:h-20 flex items-center justify-between">
+        {/* <Link href="#" className="flex items-center gap-3 group">
+          <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-accent-primary to-accent-hover rounded-button flex items-center justify-center shadow-[0_2px_12px_rgba(184,146,74,0.3)] relative overflow-hidden rounded-button">
+              <Image
+                src="/logo_mario_1.jpg"
+                alt="Dr. Mário da Cruz Martins"
+                fill
+                className="object-cover object-center grayscale"
+              />
+          </div>
+        </Link> */}
         <Link href="#" className="flex items-center gap-3 group">
           <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-accent-primary to-accent-hover rounded-button flex items-center justify-center shadow-[0_2px_12px_rgba(184,146,74,0.3)]">
             <span className="text-text-on-accent font-display text-base lg:text-lg font-bold">M</span>
           </div>
           <span className="hidden sm:inline font-display text-xl font-bold text-text-primary tracking-tight">
-            MCM
+            Mário da Cruz Martins
           </span>
         </Link>
 

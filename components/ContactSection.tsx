@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { siteConfig } from "./globals/config";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -110,10 +111,10 @@ export function ContactSection() {
                 <div>
                   <p className="font-body text-xs text-text-muted uppercase tracking-wider mb-1">WhatsApp</p>
                   <a
-                    href="tel:+5511999999999"
+                    href={siteConfig.advogado.links.whatsapp} target="_blank"
                     className="font-body font-semibold text-text-primary hover:text-accent-primary transition-colors"
                   >
-                    (11) 99999-9999
+                    {siteConfig.advogado.telefone}
                   </a>
                 </div>
               </motion.div>
@@ -125,10 +126,10 @@ export function ContactSection() {
                 <div>
                   <p className="font-body text-xs text-text-muted uppercase tracking-wider mb-1">E-mail</p>
                   <a
-                    href="mailto:contato@mariocruzadvogado.com.br"
+                    href={"mailto:" + siteConfig.advogado.email}
                     className="font-body font-semibold text-text-primary hover:text-accent-primary transition-colors break-all"
                   >
-                    contato@mariocruzadvogado.com.br
+                    {siteConfig.advogado.email}
                   </a>
                 </div>
               </motion.div>
@@ -139,7 +140,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="font-body text-xs text-text-muted uppercase tracking-wider mb-1">Escritório</p>
-                  <p className="font-body font-semibold text-text-primary">São Paulo, SP</p>
+                  <p className="font-body font-semibold text-text-primary">{siteConfig.advogado.localidade}</p>
                 </div>
               </motion.div>
             </div>
@@ -185,29 +186,6 @@ export function ContactSection() {
               </motion.div>
 
               <motion.div variants={itemVariants} className="form-group">
-                <label htmlFor="serviceType" className="form-label">
-                  Tipo de benefício
-                </label>
-                <select
-                  id="serviceType"
-                  name="serviceType"
-                  value={formData.serviceType}
-                  onChange={handleChange}
-                  required
-                  className="form-select"
-                >
-                  <option value="">Selecione um benefício</option>
-                  <option value="aposentadoria-tempo">Aposentadoria por Tempo de Contribuição</option>
-                  <option value="aposentadoria-idade">Aposentadoria por Idade</option>
-                  <option value="aposentadoria-rural">Aposentadoria Rural</option>
-                  <option value="auxilio-doenca">Auxílio-Doença</option>
-                  <option value="bpc-loas">BPC/LOAS</option>
-                  <option value="revisao-beneficio">Revisão de Benefício</option>
-                  <option value="beneficio-negado">Benefício Negado — Recurso</option>
-                </select>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="form-group">
                 <label htmlFor="message" className="form-label">
                   Mensagem (opcional)
                 </label>
@@ -231,10 +209,6 @@ export function ContactSection() {
                   {isSubmitted ? "Mensagem enviada ✓" : "Enviar mensagem"}
                 </button>
               </motion.div>
-
-              <motion.p variants={itemVariants} className="font-body text-xs text-text-muted text-center pt-1">
-                Respondemos em até 24h úteis. Sem compromisso.
-              </motion.p>
             </form>
           </motion.div>
         </div>

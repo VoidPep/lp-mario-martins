@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function HeroSection() {
   const containerVariants = {
@@ -33,7 +34,7 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
           >
-            <motion.p variants={itemVariants} className="section-label">
+            <motion.p variants={itemVariants} className="section-label !text-sm !tracking-widest">
               Advocacia Previdenciária Especializada
             </motion.p>
 
@@ -95,73 +96,18 @@ export function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="w-full max-w-md lg:max-w-none">
-              <svg className="w-full" viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg">
-                <rect
-                  x="50"
-                  y="40"
-                  width="400"
-                  height="400"
-                  fill="none"
-                  stroke="url(#grad1)"
-                  strokeWidth="1"
-                  opacity="0.3"
-                  rx="4"
-                />
-
-                {[
-                  { y: 0, width: 240, height: 32, i: 0 },
-                  { y: 60, width: 180, height: 32, i: 1 },
-                  { y: 120, width: 200, height: 32, i: 2 },
-                  { y: 180, width: 160, height: 32, i: 3 },
-                  { y: 240, width: 220, height: 32, i: 4 },
-                ].map((doc) => (
-                  <rect
-                    key={doc.i}
-                    x={(500 - doc.width) / 2}
-                    y={100 + doc.y}
-                    width={doc.width}
-                    height={doc.height}
-                    fill="#131F2A"
-                    stroke="#B8924A"
-                    strokeWidth="1.5"
-                    opacity="0.7"
-                    rx="2"
-                  />
-                ))}
-
-                <motion.line
-                  x1="80"
-                  y1="330"
-                  x2="420"
-                  y2="130"
-                  stroke="#B8924A"
-                  strokeWidth="3"
-                  strokeDasharray="400"
-                  animate={{ strokeDashoffset: [400, 0, 400] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                />
-
-                {[140, 210, 280, 350].map((x, i) => (
-                  <motion.circle
-                    key={`point-${i}`}
-                    cx={x}
-                    cy={330 - ((x - 80) * 200) / 340}
-                    r="5"
-                    fill="#B8924A"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.8 + i * 0.12, duration: 0.4 }}
-                  />
-                ))}
-
-                <defs>
-                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#B8924A" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#B8924A" stopOpacity="0.1" />
-                  </linearGradient>
-                </defs>
-              </svg>
+            <div className="w-full max-w-md lg:max-w-none relative">
+              <div className="aspect-[3/4] overflow-hidden">
+               <Image
+                src="/mario-cruz-advogado.png"
+                alt="Dr. Mário da Cruz Martins — Advogado Previdenciário"
+                fill
+                className="object-cover object-top grayscale"
+                priority
+              />
+              </div>
+              {/* Borda dourada decorativa */}
+              <div className="absolute -bottom-3 -right-3 w-full h-full border border-accent-primary/40 -z-10" />
             </div>
           </motion.div>
         </div>

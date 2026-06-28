@@ -26,19 +26,14 @@ export function TestimonialSection() {
           viewport={{ once: true, margin: "-10%" }}
         >
           <blockquote className="font-display text-2xl sm:text-3xl lg:text-4xl text-text-primary italic leading-relaxed mb-10 lg:mb-12 font-light">
-            &ldquo;Minha aposentadoria rural foi negada duas vezes. O Dr. Mário conseguiu em quatro
-            meses o que dois anos de tentativas sozinha não resolveram. Agora tenho paz e a
-            dignidade de receber o que é meu.&rdquo;
+            &ldquo;Minha aposentadoria Especial foi negada por duas vezes. Dr. Mário Cruz
+            conseguiu em quatro meses o que dois anos de tentativas sozinha
+            não resolveram. Agora tenho paz e a dignidade de receber o que é
+            meu de direito&rdquo;
           </blockquote>
 
           <div className="w-10 h-px bg-accent-primary mx-auto mb-6" />
 
-          <p className="font-body font-semibold text-text-primary mb-1.5">
-            Maria Ferreira da Silva
-          </p>
-          <p className="font-body text-sm text-text-muted">
-            Aposentadoria Rural · São Paulo, SP
-          </p>
         </motion.div>
       </div>
     </section>
