@@ -1,5 +1,6 @@
 export const siteConfig = {
   advogado: {
+    titulo: "Cruz Martins Advocacia",
     oab: "OAB/PR064952",
     especialidade: "Especialista em Direito Previdenciário",
     email: "advogadomariomartins@gmail.com",

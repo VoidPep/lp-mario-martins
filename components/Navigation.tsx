@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { siteConfig } from "./globals/config";
 
 const navLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
@@ -30,24 +31,28 @@ export function Navigation() {
       }`}
     >
       <div className="section-container h-[4.5rem] lg:h-20 flex items-center justify-between">
-        {/* <Link href="#" className="flex items-center gap-3 group">
+        <Link href="#" className="flex items-center gap-3 group">
           <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-accent-primary to-accent-hover rounded-button flex items-center justify-center shadow-[0_2px_12px_rgba(184,146,74,0.3)] relative overflow-hidden rounded-button">
               <Image
-                src="/logo_mario_1.jpg"
-                alt="Dr. Mário da Cruz Martins"
-                fill
-                className="object-cover object-center grayscale"
+                src="/logo_mario_dourado.svg"
+                alt="Logo Mário Cruz Martins"
+                width={40}
+                height={40}
+                className="object-contain"
               />
           </div>
-        </Link> */}
-        <Link href="#" className="flex items-center gap-3 group">
+          <span className="hidden sm:inline font-display text-xl font-bold text-text-primary tracking-tight">
+            {siteConfig.advogado.titulo}
+          </span>
+        </Link>
+        {/* <Link href="#" className="flex items-center gap-3 group">
           <div className="w-9 h-9 lg:w-10 lg:h-10 bg-gradient-to-br from-accent-primary to-accent-hover rounded-button flex items-center justify-center shadow-[0_2px_12px_rgba(184,146,74,0.3)]">
             <span className="text-text-on-accent font-display text-base lg:text-lg font-bold">M</span>
           </div>
           <span className="hidden sm:inline font-display text-xl font-bold text-text-primary tracking-tight">
             Mário da Cruz Martins
           </span>
-        </Link>
+        </Link> */}
 
         <div className="hidden md:flex gap-8 lg:gap-10 items-center">
           {navLinks.map(({ label, href }) => (
