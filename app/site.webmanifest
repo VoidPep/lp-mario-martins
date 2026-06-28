@@ -1,0 +1,21 @@
+{
+  "name": "Mario da Cruz",
+  "short_name": "Mario da Cruz",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "0b1219",
+  "background_color": "0b1219",
+  "display": "standalone"
+}

@@ -20,7 +20,16 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Mário da Cruz Martins | Advogado Previdenciário",
   description: "Especialista em direito previdenciário com 17+ anos de atuação. Recupere seu benefício negado, atrasado ou sub-calculado.",
-  keywords: "advogado previdenciário, aposentadoria, benefício INSS, São Paulo",
+  keywords: "advogado previdenciário, aposentadoria, benefício INSS, Maringá",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', rel: 'shortcut icon' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
+  manifest: '/site.webmanifest'
 };
 
 export const viewport: Viewport = {
