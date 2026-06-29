@@ -5,18 +5,6 @@ import { motion } from "framer-motion";
 export function TestimonialSection() {
   return (
     <section className="section-padding bg-surface-hero-alt relative overflow-hidden">
-      <motion.div
-        className="absolute top-6 left-[var(--container-px)] sm:top-10 text-accent-primary/10 pointer-events-none select-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-        viewport={{ once: true, margin: "-10%" }}
-      >
-        <span className="font-display text-[8rem] sm:text-[10rem] lg:text-[12.5rem] font-light leading-none">
-          &quot;
-        </span>
-      </motion.div>
-
       <div className="section-container relative z-10">
         <motion.div
           className="text-center max-w-4xl mx-auto"
